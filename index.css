@@ -1,0 +1,578 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+html header {
+  background-image: url(./images/head-bg-pizza.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  background-size: 100%;
+  padding: 15px;
+}
+html header a {
+  text-decoration: none;
+}
+html header a h1 {
+  color: #fff;
+  text-align: center;
+  letter-spacing: 9px;
+  background-image: url(./images/head-bg-pizzatext.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 250px;
+  background-position: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+html main {
+  background-image: url(./images/bg-image.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+html main .notfound {
+  text-align: center;
+  display: none;
+}
+html main .notfound h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: rgb(184, 240, 221);
+}
+html main #input_pizza {
+  display: flex;
+  text-align: center;
+  font-size: 25px;
+  padding: 5px 15px;
+  margin: 20px auto;
+  box-shadow: 0 0 5px -1px blueviolet;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+html main .search-cart {
+  display: flex;
+}
+html main #wrapper {
+  max-width: 1140px;
+  margin: 30px auto;
+  display: flex;
+  position: relative;
+}
+html main #wrapper .pizzas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+html main #wrapper .pizzas .pizza {
+  position: relative;
+  margin: 0 auto;
+  padding: 25px;
+  box-shadow: 0 0 5px -1px blueviolet;
+  border-radius: 25px;
+}
+html main #wrapper .pizzas .pizza img {
+  width: 100%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  box-shadow: 0 0 15px -1px rgb(154, 136, 170);
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+html main #wrapper .pizzas .pizza .pizza_info {
+  text-align: center;
+}
+html main #wrapper .pizzas .pizza .pizza_info h2,
+html main #wrapper .pizzas .pizza .pizza_info p {
+  color: rgb(123, 90, 154);
+  margin: 15px 0;
+}
+html main #wrapper .pizzas .pizza .pizza_info span {
+  color: rgb(131, 20, 20);
+  font-weight: 600;
+}
+html main #wrapper .pizzas .pizza .pizza_info button {
+  background-color: rgb(123, 90, 154);
+  border: none;
+  font-size: 15px;
+  padding: 5px 6px;
+  color: #fff;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+html main #wrapper .pizzas .pizza .non-liked {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  font-size: 20px;
+  color: blueviolet;
+  cursor: pointer;
+}
+html main #wrapper .pizzas .pizza .liked {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  font-size: 20px;
+  color: blueviolet;
+  cursor: pointer;
+}
+html main #wrapper .pizzas .pizza:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px -1px rgb(30, 1, 55);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+html main #wrapper .cart {
+  z-index: 999;
+}
+html main #wrapper .cart .cart-btn {
+  position: absolute;
+  top: -3rem;
+  right: -3rem;
+  cursor: pointer;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  padding: 15px 15px;
+  box-shadow: 0 0 5px -1px rgb(203, 175, 229);
+  transition: all 3s ease-in;
+  -webkit-transition: all 3s ease-in;
+  -moz-transition: all 3s ease-in;
+  -ms-transition: all 3s ease-in;
+  -o-transition: all 3s ease-in;
+}
+html main #wrapper .cart .cart-btn:hover #cartPrice {
+  display: block;
+}
+html main #wrapper .cart .cart-btn #cartPrice {
+  display: none;
+  background-color: #323235;
+  padding: 5px 10px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  position: absolute;
+  top: 0px;
+  right: 45px;
+  z-index: 1000;
+  color: #fff;
+  transition: all 3s;
+  -webkit-transition: all 3s;
+  -moz-transition: all 3s;
+  -ms-transition: all 3s;
+  -o-transition: all 3s;
+}
+html main #wrapper .cart .cart-btn i {
+  font-size: 20px;
+  color: rgb(40, 7, 71);
+}
+html main #wrapper .cart .cart-btn .countElem {
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  background-color: blueviolet;
+  color: #fff;
+  padding: 5px 10px;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  text-align: center;
+  font-size: 13px;
+}
+html main #wrapper .cart .list {
+  display: none;
+  width: 350px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  right: -3rem;
+  top: 1rem;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 0 5px -1px rgb(203, 175, 229);
+}
+html main #wrapper .cart .list .list-header {
+  display: flex;
+  justify-content: space-between;
+}
+html main #wrapper .cart .list .list-header h2 {
+  color: rgba(203, 24, 209, 0.6745098039);
+  font-size: 28px;
+}
+html main #wrapper .cart .list .list-header #delete-card {
+  font-size: 23px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+html main #wrapper .cart .list .list-header #delete-card p {
+  display: none;
+  position: absolute;
+  top: -10px;
+  font-size: 11px;
+  left: 25px;
+  background-color: rgba(236, 80, 215, 0.6941176471);
+  padding: 2px 5px;
+  color: #fff;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+html main #wrapper .cart .list .list-header #delete-card:hover p {
+  display: block;
+}
+html main #wrapper .cart .list .list-pizza {
+  max-height: 350px;
+  overflow-y: auto;
+}
+html main #wrapper .cart .list .list-pizza::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(203, 175, 229);
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+html main #wrapper .cart .list .list-pizza::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+html main #wrapper .cart .list .list-pizza::-webkit-scrollbar-thumb:active {
+  background-color: #c186be;
+}
+html main #wrapper .cart .list .list-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 5px 2px;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  border-left: solid 1px rgb(203, 175, 229);
+  border-bottom: solid 1px rgb(203, 175, 229);
+  border-bottom-left-radius: 10px;
+}
+html main #wrapper .cart .list .list-price:hover {
+  color: #892584;
+}
+html main #wrapper .cart .list .pizza-info {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  margin-block: 15px;
+  border-top: 1px solid #c186be;
+}
+html main #wrapper .cart .list .pizza-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc h3,
+html main #wrapper .cart .list .pizza-info .pizza-info-desc p,
+html main #wrapper .cart .list .pizza-info .pizza-info-desc button {
+  margin-block: 10px;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc h3 {
+  font-size: 20px;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc .item-price {
+  font-size: 21px;
+  font-weight: 700;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc button {
+  border: none;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: #fafee0;
+  padding: 8px;
+  cursor: pointer;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc .delete-item-div {
+  display: inline-block;
+  position: relative;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc .delete-item-div .delete-text {
+  display: none;
+  position: absolute;
+  top: -1.2rem;
+  left: 1.2rem;
+  background-color: rgba(196, 71, 185, 0.4235294118);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  font-size: 13px;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc .delete-item-div:hover {
+  transition: all 3s ease-in;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc .delete-item-div:hover .delete-text {
+  display: block;
+}
+html main #wrapper .cart .list .pizza-info .pizza-info-desc hr {
+  border: 1px solid #c186be;
+}
+html main #wrapper .favorite-list .fav-list-btn {
+  position: absolute;
+  top: -3rem;
+  left: -3rem;
+  cursor: pointer;
+}
+html main #wrapper .favorite-list .fav-list-btn .favText {
+  display: none;
+  background-color: #323235;
+  padding: 5px 10px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  position: absolute;
+  top: 0px;
+  right: 45px;
+  z-index: 1000;
+  color: #fff;
+}
+html main #wrapper .favorite-list .fav-list-btn:hover .favText {
+  display: block;
+}
+html main #wrapper .favorite-list .fav-list-btn .favIcon {
+  padding: 10px;
+  box-shadow: 0 0 5px -1px rgb(203, 175, 229);
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+html main #wrapper .favorite-list .fav-list-btn .favIcon span {
+  font-size: 20px;
+}
+html main #wrapper .favorite-list .fav-list-btn .countFav {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  background-color: blueviolet;
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 13px;
+}
+html main #wrapper .favorite-list .fav-list {
+  display: none;
+  width: 350px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  left: -3rem;
+  top: 1rem;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 0 5px -1px rgb(203, 175, 229);
+}
+html main #wrapper .favorite-list .fav-list .fav-header {
+  display: flex;
+  justify-content: space-between;
+}
+html main #wrapper .favorite-list .fav-list .fav-header h2 {
+  color: rgba(203, 24, 209, 0.6745098039);
+  font-size: 28px;
+}
+html main #wrapper .favorite-list .fav-list .fav-header #delete-favlist {
+  font-size: 23px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+html main #wrapper .favorite-list .fav-list .fav-header #delete-favlist p {
+  display: none;
+  position: absolute;
+  top: -23px;
+  font-size: 11px;
+  left: 25px;
+  background-color: rgba(236, 80, 215, 0.6941176471);
+  padding: 2px 5px;
+  color: #fff;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+html main #wrapper .favorite-list .fav-list .fav-header #delete-favlist:hover p {
+  display: block;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza {
+  max-height: 350px;
+  overflow-y: auto;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(203, 175, 229);
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza::-webkit-scrollbar-thumb:active {
+  background-color: #c186be;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  margin-block: 15px;
+  border-top: 1px solid #c186be;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info .pizza-info-desc h3,
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info .pizza-info-desc p {
+  margin-block: 10px;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info .pizza-info-desc h3 {
+  font-size: 20px;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info .pizza-info-desc .item-price {
+  font-size: 21px;
+  font-weight: 700;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info .pizza-info-desc hr {
+  border: 1px solid #c186be;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info .deleteFavPizza {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+html main #wrapper .favorite-list .fav-list .fav-pizza .pizza-info .deleteFavPizza:hover {
+  color: #892584;
+}
+html main #back-drop {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  padding: 10px 15px;
+  background-color: #892584;
+  border: none;
+  font-size: 20px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+}
+html main #back-drop:hover {
+  background-color: rgba(137, 37, 132, 0.5529411765);
+}/*# sourceMappingURL=index.css.map */

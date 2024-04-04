@@ -1,0 +1,591 @@
+@import "imports";
+
+html {
+    scroll-behavior: smooth;
+    header {
+        background-image: url(./images/head-bg-pizza.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        position: sticky;
+        top: 0;
+        z-index: 99999;
+        background-size: 100%;
+        padding: 15px;
+        a {
+            text-decoration: none;
+            h1 {
+                color: #fff;
+                text-align: center;
+                // text-decoration: underline;
+                letter-spacing: 9px;
+                // text-shadow:
+                //     1px 1px 2px rgb(114, 112, 112),
+                //     0 0 25px rgb(179, 179, 204),
+                //     0 0 5px #e98cfd72;
+                background-image: url(./images/head-bg-pizzatext.jpeg);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-size: 250px;
+                background-position: center;
+                color: transparent;
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+        }
+    }
+    main {
+        background-image: url(./images/bg-image.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-attachment: fixed;
+        .notfound {
+            text-align: center;
+            display: none;
+            h2 {
+                font-size: 30px;
+                margin-bottom: 20px;
+                color: rgb(184, 240, 221);
+            }
+        }
+        #input_pizza {
+            display: flex;
+            text-align: center;
+            font-size: 25px;
+            padding: 5px 15px;
+            margin: 20px auto;
+            box-shadow: 0 0 5px -1px blueviolet;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            -webkit-border-radius: 25px;
+            -moz-border-radius: 25px;
+            -ms-border-radius: 25px;
+            -o-border-radius: 25px;
+        }
+        .search-cart {
+            display: flex;
+        }
+        #wrapper {
+            max-width: 1140px;
+            margin: 30px auto;
+            display: flex;
+            position: relative;
+            .pizzas {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                .pizza {
+                    position: relative;
+                    margin: 0 auto;
+                    padding: 25px;
+                    box-shadow: 0 0 5px -1px blueviolet;
+                    border-radius: 25px;
+                    img {
+                        width: 100%;
+                        border-radius: 50%;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        -ms-border-radius: 50%;
+                        -o-border-radius: 50%;
+                        box-shadow: 0 0 15px -1px rgb(154, 136, 170);
+                        transition: all 0.5s;
+                        -webkit-transition: all 0.5s;
+                        -moz-transition: all 0.5s;
+                        -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                        // animation-name: imageanimation;
+                    }
+                    .pizza_info {
+                        text-align: center;
+                        h2,
+                        p {
+                            color: rgb(123, 90, 154);
+                            margin: 15px 0;
+                        }
+                        span {
+                            color: rgb(131, 20, 20);
+                            font-weight: 600;
+                        }
+                        button {
+                            background-color: rgb(123, 90, 154);
+                            border: none;
+                            font-size: 15px;
+                            padding: 5px 6px;
+                            color: #fff;
+                            border-radius: 15px;
+                            -webkit-border-radius: 15px;
+                            -moz-border-radius: 15px;
+                            -ms-border-radius: 15px;
+                            -o-border-radius: 15px;
+                            cursor: pointer;
+                            margin-left: 5px;
+                        }
+                    }
+                    .non-liked {
+                        position: absolute;
+                        top: 2%;
+                        left: 2%;
+                        font-size: 20px;
+                        color: blueviolet;
+                        cursor: pointer;
+                    }
+                    .liked {
+                        position: absolute;
+                        top: 2%;
+                        left: 2%;
+                        font-size: 20px;
+                        color: blueviolet;
+                        cursor: pointer;
+                    }
+                    &:hover {
+                        img {
+                            transform: scale(1.05);
+                            box-shadow: 0 0 25px -1px rgb(30, 1, 55);
+                            -webkit-transform: scale(1.05);
+                            -moz-transform: scale(1.05);
+                            -ms-transform: scale(1.05);
+                            -o-transform: scale(1.05);
+                        }
+                    }
+                }
+            }
+            .cart {
+                z-index: 999;
+
+                .cart-btn {
+                    position: absolute;
+                    top: -3rem;
+                    right: -3rem;
+                    cursor: pointer;
+                    border-radius: 25px;
+                    -webkit-border-radius: 25px;
+                    -moz-border-radius: 25px;
+                    -ms-border-radius: 25px;
+                    -o-border-radius: 25px;
+                    padding: 15px 15px;
+                    box-shadow: 0 0 5px -1px rgb(203, 175, 229);
+                    transition: all 3s ease-in;
+                    -webkit-transition: all 3s ease-in;
+                    -moz-transition: all 3s ease-in;
+                    -ms-transition: all 3s ease-in;
+                    -o-transition: all 3s ease-in;
+                    &:hover {
+                        #cartPrice {
+                            display: block;
+                        }
+                    }
+                    #cartPrice {
+                        display: none;
+                        background-color: #323235;
+                        padding: 5px 10px;
+                        border-radius: 15px;
+                        -webkit-border-radius: 15px;
+                        -moz-border-radius: 15px;
+                        -ms-border-radius: 15px;
+                        -o-border-radius: 15px;
+                        position: absolute;
+                        top: 0px;
+                        right: 45px;
+                        z-index: 1000;
+                        color: #fff;
+                        transition: all 3s;
+                        -webkit-transition: all 3s;
+                        -moz-transition: all 3s;
+                        -ms-transition: all 3s;
+                        -o-transition: all 3s;
+                    }
+                    i {
+                        font-size: 20px;
+                        color: rgb(40, 7, 71);
+                    }
+                    .countElem {
+                        border-radius: 25px;
+                        -webkit-border-radius: 25px;
+                        -moz-border-radius: 25px;
+                        -ms-border-radius: 25px;
+                        -o-border-radius: 25px;
+                        background-color: blueviolet;
+                        color: #fff;
+                        padding: 5px 10px;
+                        position: absolute;
+                        top: -0.5rem;
+                        right: -0.5rem;
+                        text-align: center;
+                        font-size: 13px;
+                    }
+                }
+                .list {
+                    display: none;
+                    width: 350px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.4);
+                    -webkit-backdrop-filter: blur(5px);
+                    backdrop-filter: blur(5px);
+                    right: -3rem;
+                    top: 1rem;
+                    border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    -ms-border-radius: 5px;
+                    -o-border-radius: 5px;
+                    padding: 15px;
+                    box-shadow: 0 0 5px -1px rgb(203, 175, 229);
+                    .list-header {
+                        display: flex;
+                        justify-content: space-between;
+                        h2 {
+                            color: #cb18d1ac;
+                            font-size: 28px;
+                        }
+                        #delete-card {
+                            font-size: 23px;
+                            border: none;
+                            background-color: transparent;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            position: relative;
+                            p {
+                                display: none;
+                                position: absolute;
+                                top: -10px;
+                                font-size: 11px;
+                                left: 25px;
+                                background-color: #ec50d7b1;
+                                padding: 2px 5px;
+                                color: #fff;
+                                border-radius: 6px;
+                                -webkit-border-radius: 6px;
+                                -moz-border-radius: 6px;
+                                -ms-border-radius: 6px;
+                                -o-border-radius: 6px;
+                            }
+                            &:hover {
+                                p {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                    .list-pizza {
+                        max-height: 350px;
+                        overflow-y: auto;
+                        &::-webkit-scrollbar {
+                            width: 10px;
+                            background-color: rgb(203, 175, 229);
+                            border-radius: 25px;
+                            -webkit-border-radius: 25px;
+                            -moz-border-radius: 25px;
+                            -ms-border-radius: 25px;
+                            -o-border-radius: 25px;
+                        }
+                        &::-webkit-scrollbar-thumb {
+                            background-color: rgba(255, 255, 255, 0.4);
+                            -webkit-backdrop-filter: blur(5px);
+                            backdrop-filter: blur(5px);
+                            border-radius: 25px;
+                            -webkit-border-radius: 25px;
+                            -moz-border-radius: 25px;
+                            -ms-border-radius: 25px;
+                            -o-border-radius: 25px;
+                            &:active {
+                                background-color: #c186be;
+                            }
+                        }
+                    }
+                    .list-price {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 25px;
+                        font-weight: 700;
+                        padding: 5px 2px;
+                        transition: all 0.2s;
+                        -webkit-transition: all 0.2s;
+                        -moz-transition: all 0.2s;
+                        -ms-transition: all 0.2s;
+                        -o-transition: all 0.2s;
+                        &:hover {
+                            color: #892584;
+                        }
+                        border-left: solid 1px rgb(203, 175, 229);
+                        border-bottom: solid 1px rgb(203, 175, 229);
+                        border-bottom-left-radius: 10px;
+                    }
+                    .pizza-info {
+                        display: flex;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        gap: 20px;
+                        margin-block: 15px;
+                        border-top: 1px solid #c186be;
+                        img {
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 50%;
+                            -webkit-border-radius: 50%;
+                            -moz-border-radius: 50%;
+                            -ms-border-radius: 50%;
+                            -o-border-radius: 50%;
+                        }
+                        .pizza-info-desc {
+                            h3,
+                            p,
+                            button {
+                                margin-block: 10px;
+                            }
+                            h3 {
+                                font-size: 20px;
+                            }
+                            .item-price {
+                                font-size: 21px;
+                                font-weight: 700;
+                            }
+                            button {
+                                border: none;
+                                border-radius: 50%;
+                                -webkit-border-radius: 50%;
+                                -moz-border-radius: 50%;
+                                -ms-border-radius: 50%;
+                                -o-border-radius: 50%;
+                                background-color: #fafee0;
+                                padding: 8px;
+                                cursor: pointer;
+                            }
+                            .delete-item-div {
+                                display: inline-block;
+                                position: relative;
+                                .delete-text {
+                                    display: none;
+                                    position: absolute;
+                                    top: -1.2rem;
+                                    left: 1.2rem;
+                                    background-color: #c447b96c;
+                                    color: #fff;
+                                    padding: 5px;
+                                    border-radius: 5px;
+                                    -webkit-border-radius: 5px;
+                                    -moz-border-radius: 5px;
+                                    -ms-border-radius: 5px;
+                                    -o-border-radius: 5px;
+                                    font-size: 13px;
+                                }
+                                &:hover {
+                                    transition: all 3s ease-in;
+                                    .delete-text {
+                                        display: block;
+                                    }
+                                }
+                            }
+                            hr {
+                                border: 1px solid #c186be;
+                            }
+                        }
+                    }
+                }
+            }
+            .favorite-list {
+                .fav-list-btn {
+                    position: absolute;
+                    top: -3rem;
+                    left: -3rem;
+                    cursor: pointer;
+                    .favText {
+                        display: none;
+                        background-color: #323235;
+                        padding: 5px 10px;
+                        border-radius: 15px;
+                        -webkit-border-radius: 15px;
+                        -moz-border-radius: 15px;
+                        -ms-border-radius: 15px;
+                        -o-border-radius: 15px;
+                        position: absolute;
+                        top: 0px;
+                        right: 45px;
+                        z-index: 1000;
+                        color: #fff;
+                    }
+                    &:hover {
+                        .favText {
+                            display: block;
+                        }
+                    }
+                    .favIcon {
+                        padding: 10px;
+                        box-shadow: 0 0 5px -1px rgb(203, 175, 229);
+                        border-radius: 25px;
+                        -webkit-border-radius: 25px;
+                        -moz-border-radius: 25px;
+                        -ms-border-radius: 25px;
+                        -o-border-radius: 25px;
+                        span {
+                            font-size: 20px;
+                        }
+                    }
+                    .countFav {
+                        position: absolute;
+                        top: -0.5rem;
+                        right: -0.5rem;
+                        border-radius: 25px;
+                        -webkit-border-radius: 25px;
+                        -moz-border-radius: 25px;
+                        -ms-border-radius: 25px;
+                        -o-border-radius: 25px;
+                        background-color: blueviolet;
+                        color: #fff;
+                        padding: 5px 10px;
+                        text-align: center;
+                        font-size: 13px;
+                    }
+                }
+                .fav-list {
+                    display: none;
+                    width: 350px;
+                    position: absolute;
+                    background-color: rgba(255, 255, 255, 0.4);
+                    -webkit-backdrop-filter: blur(5px);
+                    backdrop-filter: blur(5px);
+                    left: -3rem;
+                    top: 1rem;
+                    border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    -ms-border-radius: 5px;
+                    -o-border-radius: 5px;
+                    padding: 15px;
+                    box-shadow: 0 0 5px -1px rgb(203, 175, 229);
+                    .fav-header {
+                        display: flex;
+                        justify-content: space-between;
+                        h2 {
+                            color: #cb18d1ac;
+                            font-size: 28px;
+                        }
+                        #delete-favlist {
+                            font-size: 23px;
+                            border: none;
+                            background-color: transparent;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            position: relative;
+                            p {
+                                display: none;
+                                position: absolute;
+                                top: -23px;
+                                font-size: 11px;
+                                left: 25px;
+                                background-color: #ec50d7b1;
+                                padding: 2px 5px;
+                                color: #fff;
+                                border-radius: 6px;
+                                -webkit-border-radius: 6px;
+                                -moz-border-radius: 6px;
+                                -ms-border-radius: 6px;
+                                -o-border-radius: 6px;
+                            }
+                            &:hover {
+                                p {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                    .fav-pizza {
+                        max-height: 350px;
+                        overflow-y: auto;
+                        &::-webkit-scrollbar {
+                            width: 10px;
+                            background-color: rgb(203, 175, 229);
+                            border-radius: 25px;
+                            -webkit-border-radius: 25px;
+                            -moz-border-radius: 25px;
+                            -ms-border-radius: 25px;
+                            -o-border-radius: 25px;
+                        }
+                        &::-webkit-scrollbar-thumb {
+                            background-color: rgba(255, 255, 255, 0.4);
+                            -webkit-backdrop-filter: blur(5px);
+                            backdrop-filter: blur(5px);
+                            border-radius: 25px;
+                            -webkit-border-radius: 25px;
+                            -moz-border-radius: 25px;
+                            -ms-border-radius: 25px;
+                            -o-border-radius: 25px;
+                            &:active {
+                                background-color: #c186be;
+                            }
+                        }
+                        .pizza-info {
+                            display: flex;
+                            justify-content: space-evenly;
+                            align-items: center;
+                            gap: 20px;
+                            position: relative;
+                            margin-block: 15px;
+                            border-top: 1px solid #c186be;
+                            img {
+                                width: 100px;
+                                height: 100px;
+                                border-radius: 50%;
+                                -webkit-border-radius: 50%;
+                                -moz-border-radius: 50%;
+                                -ms-border-radius: 50%;
+                                -o-border-radius: 50%;
+                            }
+                            .pizza-info-desc {
+                                h3,
+                                p {
+                                    margin-block: 10px;
+                                }
+                                h3 {
+                                    font-size: 20px;
+                                }
+                                .item-price {
+                                    font-size: 21px;
+                                    font-weight: 700;
+                                }
+                                hr {
+                                    border: 1px solid #c186be;
+                                }
+                            }
+                            .deleteFavPizza {
+                                position: absolute;
+                                right: 10px;
+                                top: 10px;
+                                cursor: pointer;
+                                font-size: 20px;
+                                &:hover {
+                                    color: #892584;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #back-drop {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            padding: 10px 15px;
+            background-color: #892584;
+            border: none;
+            font-size: 20px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease-in;
+            -webkit-transition: all 0.3s ease-in;
+            -moz-transition: all 0.3s ease-in;
+            -ms-transition: all 0.3s ease-in;
+            -o-transition: all 0.3s ease-in;
+            &:hover {
+                background-color: #8925848d;
+            }
+        }
+    }
+}
