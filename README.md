@@ -1,2 +1,2 @@
-# JS-task-32-2-
-JS-task-32(2)
+# Pizza site (not responsive)
+https://mypizzassite.vercel.app/
